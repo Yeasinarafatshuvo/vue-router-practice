@@ -1,10 +1,30 @@
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link :to="{ name: 'About' }">About</router-link>
+    <router-link :to="{ name: 'jobs' }">Job</router-link>
   </nav>
-  <router-view/>
+  <router-view />
+  <button @click="redirect">Redirect</button>
+  <button @click="back">Back</button>
+  <button @click="forward">Forward</button>
 </template>
+
+<script>
+export default {
+  methods: {
+    redirect() {
+      this.$router.push({ name: "About" });
+    },
+    back() {
+      this.$router.go(-1);
+    },
+    forward() {
+      this.$router.go(1);
+    },
+  },
+};
+</script>
 
 <style>
 #app {
